@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prueba de Conexión a la Base de Datos</title>
+</head>
+<body>
+    <h1>Prueba de Conexión a la Base de Datos</h1>
+
+    {% if error %}
+        <p style="color: red;">**Error de Conexión:** {{ error }}</p>
+    {% else %}
+        <p style="color: green;">¡Conexión exitosa a la base de datos!</p>
+        <h2>Usuarios en la Base de Datos:</h2>
+        <ul>
+            {% for usuario in usuarios %}
+                <li>{{ usuario.nombre_usuario }} (ID: {{ usuario.id }})</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
