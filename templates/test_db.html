@@ -13,8 +13,13 @@
         <h2>Usuarios en la Base de Datos:</h2>
         <ul>
             {% for usuario in usuarios %}
-                <li>{{ usuario.nombre_usuario }} (ID: {{ usuario.id }})</li>
+                <li>{{ usuario.nombre }} (ID: {{ usuario.id }})</li>
             {% endfor %}
+
+            {% for post in posts %}
+                <li>{{ post.contenido }} (ID: {{ post.id_post }}) (USUARIO_ID: {{ post.id_usuario }})</li>
+            {% endfor %}
+
         </ul>
     {% endif %}
 </body>
