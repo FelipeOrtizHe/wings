@@ -13,53 +13,57 @@
 <body>
     <header>
         <nav>
-            <ul>
-                <li><a href="/home" class="logo">Wings</a></li>
-                <li class="auth-buttons">
-                    <a href="/registro">Registrarse</a>
-                    <a href="/login">Iniciar Sesión</a>
-                </li>
-                
+            <ul class="logo-container">
+                <li><a href="/home" class="logo">
+                    <img src="/static/wings.png" alt="logo"></a></li>
+            </ul>
+            <div class="search-banner">
+                <input type="text" placeholder="Buscar usuarios...">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+            <ul class="auth-buttons">
+                <li><a href="/registro">Registrarse</a></li>
+                <li><a href="/login">Iniciar Sesión</a></li>
             </ul>
         </nav>
     </header>
-
+    
     <main class="container">
         <section class="post-feed">
             <h2>Publicaciones recientes</h2>
             {%if posts %}
                 {%for post in posts %}
                     <div class="post">
-                        <div class="post-header"></div>
+                        <div class="post-header">
                             <span class="author"> {{post.autor.nombre if post.autor.nombre else 'Usuario Desconocido'}} </span>
                             <span class="timestamp"> {{post.fecha_creacion}} </span>
                             <span class="content"> {{post.contenido}} </span>
+                        </div>
                         <div class="post_action">
-                                <a href="#"><i class="far fa-heart"></i> Me gusta</a>
-                                <a href="#"><i class="far fa-comment"></i> Comentar</a>     
+                            <a href="#"><i class="far fa-heart"></i> Me gusta</a>
+                            <a href="#"><i class="far fa-comment"></i> Comentar</a>
                         </div>
                     </div>
-                {% endfor %}   
-            {% else %} 
+                {% endfor %}
+            {% else %}
                 <p> No hay Publicaciones</p>
             {% endif %}
-            </section>
-
-            <aside class="sidebar">
-                <div class="user-info">
-                    <h3> Bienvenido/a</h3>
-                    <p> informacion del usuario aqui.</p>
-                </div>
-                <div class="suggestions">
-                    <h3> Sugerencias</h3>
-                    <ul>
-                        <li><a href="#">Usuario 1</a></li>
-                        <li><a href="#">Usuario 2</a></li>
-                        <li><a href="#">Usuario 3</a></li>
-                    </ul>
-                </div>
-
-            </aside>
+        </section>
+    
+        <aside class="sidebar">
+            <div class="user-info">
+                <h3> Bienvenido/a</h3>
+                <p> informacion del usuario aqui.</p>
+            </div>
+            <div class="suggestions">
+                <h3> Sugerencias</h3>
+                <ul>
+                    <li><a href="#">Usuario 1</a></li>
+                    <li><a href="#">Usuario 2</a></li>
+                    <li><a href="#">Usuario 3</a></li>
+                </ul>
+            </div>
+        </aside>
     </main>
     <footer>
         <p> &copy; 2025 Wings - Derechos reservados para FELIPE ORTIZ HERRERA </p>

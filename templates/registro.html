@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro Nuevos usuarios </title>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
 </head>
 <body>
-    <h1> Bienvenidos a la patalla de Registro</h1>
+    <h1> Bienvenidos a la pantalla de Registro</h1>
     <form method= "POST"action="">
         {{form.hidden_tag()}}
         <p>
@@ -15,23 +15,22 @@
             {{form.nombre(size=30)}} <br>
             {% for error in form.nombre.errors %}
             <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
+            {% endfor %}
         </p>
 
-        <p> 
+        <p>
             {{form.correo_electronico.label}} <br>
             {{form.correo_electronico(size=30)}} <br>
             {% for error in form.correo_electronico.errors %}
             <span style="color: red;">[{{ error }}]</span>
-        {% endfor %}
-
+            {% endfor %}
         </p>
         <p>
             {{form.contraseña.label}} <br>
             {{form.contraseña(size=30)}} <br>
             {% for error in form.contraseña.errors %}
             <span style="color: red;">[{{ error }}]</span>
-        {% endfor %} 
+            {% endfor %}
         </p>
         <p>
             {{ form.confirmar_contraseña.label }}<br>
@@ -49,7 +48,5 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
-
-    
 </body>
 </html>
