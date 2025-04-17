@@ -1,89 +1,213 @@
 
-
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
     color: #333;
+    min-height: 100vh; 
     display: flex;
     flex-direction: column; 
-    justify-content: center;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 0.8em 20px;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
-    min-height: 100vh;
-    background-image: url('/static/wings.png');
-    background-size: 300px; 
-    background-position: center;
+    justify-content: space-between; 
 }
 
-h1 {
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px; 
-    position: center;
-    z-index: 10;
+nav ul.logo-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-grow: 0; 
 }
 
-form {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    backdrop-filter: blur(10px);
-    display: flex; 
-    flex-direction: column; 
-    align-items: stretch; 
+nav ul.logo-container li {
+    margin: 0;
 }
 
-p {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
+nav ul.logo-container li a.logo {
+    font-size: 1.5em;
     font-weight: bold;
-    color: #555;
+    display: flex;
+    align-items: center;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-textarea {
-    width: calc(100% - 12px);
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1em;
-    color: #333;
-    box-sizing: border-box;
+nav ul.logo-container li a.logo img {
+    max-height: 100px; 
+    vertical-align: middle;
+    margin-right: 10px;
+    width: auto;
 }
 
-textarea {
-    resize: vertical;
+.search-banner {
+    display: flex;
+    align-items: center;
+    margin: 10px 20px;
+    flex-grow: 1; 
+    justify-content: center; 
 }
 
-span[style="color: red;"] {
-    display: block;
-    margin-top: 5px;
+.search-banner input[type="text"] {
+    padding: 0.6em;
+    border: none;
+    border-radius: 5px 0 0 5px;
     font-size: 0.9em;
+    color: #333;
+    width: 600px;
+    max-width: 100%;
 }
 
-input[type="submit"] {
+.search-banner button[type="submit"] {
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    padding: 0.6em 1em;
+    cursor: pointer;
+    font-size: 1.em;
+    transition: background-color 0.3s ease;
+}
+
+.search-banner button[type="submit"]:hover {
+    background-color: #777;
+}
+
+.auth-buttons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-grow: 0;
+}
+
+.auth-buttons a {
     background-color: #007bff;
     color: #fff;
-    padding: 10px 15px;
-    border: none;
     border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
+    margin-left: 10px;
+    padding: 0.5em 0.8em;
     transition: background-color 0.3s ease;
-    width: 100%;
-    box-sizing: border-box;
+    font-size: 1.0em;
+    text-decoration: none;
 }
 
-input[type="submit"]:hover {
+.auth-buttons a:hover {
     background-color: #0056b3;
+}
+
+main.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    flex-grow: 1; 
+}
+
+section.post-feed {
+    flex: 3;
+}
+
+section.post-feed h2 {
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+div.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #222;
+    color: #fff;
+    width: 100%;
+    margin-top: auto; 
+}
+
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5em 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul.logo-container {
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    nav ul.logo-container li a.logo img {
+        max-height: 25px;
+    }
+
+    .search-banner {
+        margin: 10px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .search-banner input[type="text"] {
+        width: 70%;
+    }
+
+    .search-banner button[type="submit"] {
+        width: 30%;
+    }
+
+    .auth-buttons {
+        flex-direction: row;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .auth-buttons a {
+        margin-left: 0;
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+
+    main.container {
+        flex-direction: column;
+    }
+
+    aside.sidebar {
+        order: -1;
+        margin-bottom: 20px;
+    }
 }

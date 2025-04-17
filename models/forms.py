@@ -11,6 +11,7 @@ class Registro(FlaskForm):
     confirmar_contraseña = PasswordField('Confirmar contraseña,', validators=[DataRequired(),EqualTo('contraseña')])
     biografia = TextAreaField('Biografia', validators=[Length(max=200)])
     submit = SubmitField('Registrarse')
+    
 
     def validacion_nombre(self,nombre):
         usuario = Usuario.query.filter_by(nombre=nombre.data).first()
