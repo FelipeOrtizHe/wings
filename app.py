@@ -55,6 +55,6 @@ def registro():
     return render_template('registro.html', title= 'Registro', form = form)
 
 if __name__ == '__main__':
-    with app.app_context():  # Corrección de la tipografía aquí
+    with app.app_context():  
         db.create_all()
     app.run(debug=app.config['DEBUG'])

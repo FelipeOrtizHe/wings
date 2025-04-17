@@ -1,4 +1,4 @@
-/* static/css/registro.css */
+
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -7,7 +7,7 @@ body {
     background-color: #f4f4f4;
     color: #333;
     display: flex;
-    flex-direction: column; /* Organizar elementos en columna */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -19,10 +19,10 @@ body {
 h1 {
     color: #333;
     text-align: center;
-    margin-bottom: 30px; /* Un margen razonable */
+    margin-bottom: 30px; 
     position: relative;
     z-index: 10;
-    width: 100%; /* Asegurar que ocupe el ancho del body para centrar el texto */
+    width: 100%; 
 }
 
 form {
@@ -38,7 +38,6 @@ form {
     align-items: stretch;
 }
 
-/* ... (resto de los estilos del formulario) ... */
 p {
     margin-bottom: 20px;
 }
