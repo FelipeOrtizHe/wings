@@ -90,7 +90,7 @@ input[type="submit"]:hover {
 }
 
 .Regresar{
-    background-color: #007bff; /* Un color grisáceo diferente al azul de registrar */
+    background-color: #007bff; 
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -98,14 +98,14 @@ input[type="submit"]:hover {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    text-decoration: none; /* Eliminar el subrayado del enlace */
-    display: inline-block; /* Para que respete el padding y el width si lo aplicamos */
-    width: 100%; /* Ocupar el mismo ancho que el botón de registrar */
-    box-sizing: border-box; /* Incluir padding y border en el ancho */
-    text-align: center; /* Centrar el texto dentro del enlace */
-    margin-top: 10px; /* Espacio entre el botón de registrar y el enlace */
+    text-decoration: none; 
+    display: inline-block; 
+    width: 100%; 
+    box-sizing: border-box; 
+    text-align: center; 
+    margin-top: 10px; 
 }
 
 .Regresar:hover {
-    background-color: #b31b00; /* Un tono más claro al hacer hover */
+    background-color: #b31b00; 
 }
