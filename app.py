@@ -16,6 +16,10 @@ app.config.from_pyfile('utils/secret.py')
 db.init_app(app)
 
 
+@app.route("/")
+def index():
+    return redirect(url_for("posts"))
+
 @app.route("/home")
 def posts():
     posts = Post.query.all()
