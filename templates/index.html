@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wings</title>
-    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     
@@ -14,10 +14,56 @@
     <header>
         <nav>
             <ul>
+                <li><a href="/home" class="logo">Wings</a></li>
+                <li class="auth-buttons">
+                    <a href="/registro">Registrarse</a>
+                    <a href="/login">Iniciar Sesión</a>
+                </li>
                 
             </ul>
         </nav>
     </header>
+
+    <main class="container">
+        <section class="post-feed">
+            <h2>Publicaciones recientes</h2>
+            {%if posts %}
+                {%for post in posts %}
+                    <div class="post">
+                        <div class="post-header"></div>
+                            <span class="author"> {{post.autor.nombre if post.autor.nombre else 'Usuario Desconocido'}} </span>
+                            <span class="timestamp"> {{post.fecha_creacion}} </span>
+                            <span class="content"> {{post.contenido}} </span>
+                        <div class="post_action">
+                                <a href="#"><i class="far fa-heart"></i> Me gusta</a>
+                                <a href="#"><i class="far fa-comment"></i> Comentar</a>     
+                        </div>
+                    </div>
+                {% endfor %}   
+            {% else %} 
+                <p> No hay Publicaciones</p>
+            {% endif %}
+            </section>
+
+            <aside class="sidebar">
+                <div class="user-info">
+                    <h3> Bienvenido/a</h3>
+                    <p> informacion del usuario aqui.</p>
+                </div>
+                <div class="suggestions">
+                    <h3> Sugerencias</h3>
+                    <ul>
+                        <li><a href="#">Usuario 1</a></li>
+                        <li><a href="#">Usuario 2</a></li>
+                        <li><a href="#">Usuario 3</a></li>
+                    </ul>
+                </div>
+
+            </aside>
+    </main>
+    <footer>
+        <p> &copy; 2025 Wings - Derechos reservados para FELIPE ORTIZ HERRERA </p>
+    </footer>
  
 </body>
 </html> 

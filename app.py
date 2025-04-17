@@ -17,8 +17,9 @@ db.init_app(app)
 
 
 @app.route("/home")
-def hello_world():
-    return "<p>Hello, World!</p>"
+def posts():
+    posts = Post.query.all()
+    return render_template('index.html', posts=posts)
 
 @app.route("/testdb")
 def test_db_connection():

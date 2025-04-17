@@ -7,7 +7,7 @@ class Post(db.Model):
     contenido = db.Column(db.Text, nullable=False)
     imagen = db.Column(db.String(255))
     fecha_creacion = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
-    autor = db.relationship('Usuario', backref='usuario', lazy=True) # Relación definida aquí
+    autor = db.relationship('Usuario', backref='usuario', lazy=True) 
 
     def __repr__(self):
         return f'<Post {self.contenido[:20]}>'
