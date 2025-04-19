@@ -22,3 +22,10 @@ class Registro(FlaskForm):
         usuario = Usuario.query.filter_by(correo_electronico=correo_electronico.data).first()
         if usuario:
             raise ValidationError('Este correo electrónico ya está registrado. ¿Olvidaste tu contraseña?')
+        
+
+class Crear_registro(FlaskForm):
+    contenido = TextAreaField('Que quieres publicar?', validators=[DataRequired(), Length(min = 5, max= 250)])
+    submit = SubmitField('Subir estado')
+
+

@@ -17,6 +17,23 @@ header {
     z-index: 100;
 }
 
+.post .post_action a {
+    text-decoration: none;
+    color:#da528c;
+  }
+
+.post_action a:hover
+{
+    text-decoration: double;
+    color:#0f99f1;
+}
+
+  .suggestions a {
+    color:#000000;
+    text-decoration: none;
+  }
+  
+
 nav {
     max-width: 1200px;
     margin: 0 auto;
@@ -71,8 +88,8 @@ nav ul.logo-container li a.logo img {
 }
 
 .search-banner button[type="submit"] {
-    background-color: #555;
-    color: #fff;
+    background-color: #da528c;
+    color: #0f99f1;
     border: none;
     border-radius: 0 5px 5px 0;
     padding: 0.6em 1em;
@@ -82,7 +99,7 @@ nav ul.logo-container li a.logo img {
 }
 
 .search-banner button[type="submit"]:hover {
-    background-color: #777;
+    background-color: #df9f87;
 }
 
 .auth-buttons {
@@ -95,7 +112,7 @@ nav ul.logo-container li a.logo img {
 }
 
 .auth-buttons a {
-    background-color: #007bff;
+    background-color: #0f99f1;
     color: #fff;
     border-radius: 5px;
     margin-left: 10px;
@@ -115,7 +132,7 @@ main.container {
     padding: 20px;
     display: flex;
     gap: 20px;
-    flex-grow: 1; 
+    flex-grow: 2; 
 }
 
 section.post-feed {
@@ -151,6 +168,80 @@ footer {
 
 
 
+aside#crear-post {
+    flex: 0 0 300px; 
+    padding: 15px;
+    background-color: #129eefd5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    order: 0; 
+}
+section.post-feed {
+    flex: 2; /* Ocupa el espacio restante, dándole más prioridad */
+    order: 1; /* Se coloca en segundo lugar (centro) */
+}
+
+aside.sidebar {
+    flex: 0 0 250px; /* Ancho fijo para la barra lateral derecha */
+    padding: 15px;
+    background-color: #da528c; /* Puedes añadir un color de fondo para visualizar */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    order: 2; /* Se coloca en tercer lugar (derecha) */
+}
+
+aside#crear-post h2 {
+    color: #333333;
+    border-bottom: 1px solid #000000a2;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    font-size: 1.2em;
+}
+
+aside#crear-post textarea {
+    width: 100%;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box; /* Para que el padding no aumente el ancho total */
+    font-size: 1em;
+    margin-top: 1em; /* Espacio entre el título y el textarea */
+}
+
+aside#crear-post button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8em 1.2em;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ocupar todo el ancho del aside */
+    box-sizing: border-box;
+}
+
+aside#crear-post button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+section.post-feed {
+    flex: 2; /* Le damos más espacio al feed de publicaciones */
+    order: 0; /* Lo colocamos primero */
+}
+
+section.post-feed h2 {
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+
+
+
+
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -170,6 +261,7 @@ footer {
         width: 100%;
         justify-content: flex-start;
     }
+    
 
     nav ul.logo-container li a.logo img {
         max-height: 25px;

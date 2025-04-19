@@ -1,11 +1,13 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for,flash
 from models.extensions import db
 from utils import config
 from models import Usuario, Post
-from models.forms import Registro
+from models.forms import Registro, Crear_registro
 from werkzeug.security import generate_password_hash
 from utils.secret import SECRET_KEY
 from sqlalchemy.exc import IntegrityError
+from datetime import datetime
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -22,8 +24,24 @@ def index():
 
 @app.route("/home")
 def posts():
+    form_crear_post = Crear_registro()
     posts = Post.query.all()
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', posts=posts, form_crear_post =form_crear_post)   
+
+@app.route("/crear_post", methods=['POST'])
+def crear_post():
+    form_crear_post = Crear_registro()
+    if form_crear_post.validate_on_submit():
+        contenido = form_crear_post.contenido.data
+        nueva_publicacion =Post(cotenido= contenido, fecha_publicacion= datetime.timezone.UTC-5())
+        db.session.add(nueva_publicacion)
+        db.session.commit()
+        flash('¡Publicación creada!', 'success')
+
+        return redirect(url_for('home'))
+    return redirect(url_for('home'))
+
+
 
 @app.route("/testdb")
 def test_db_connection():
