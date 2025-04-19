@@ -127,13 +127,15 @@ nav ul.logo-container li a.logo img {
 }
 
 main.container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
     display: flex;
-    gap: 20px;
-    flex-grow: 2; 
+    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    align-items: flex-start;
 }
+
+main.container > * { /* Selecciona todos los elementos hijos directos de main.container */
+    margin-left: 10px; /* Agrega un margen izquierdo de 10 píxeles */
+    margin-right: 10px; /* Agrega un margen derecho de 10 píxeles */
+  }
 
 section.post-feed {
     flex: 3;
