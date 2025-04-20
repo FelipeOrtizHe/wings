@@ -17,6 +17,17 @@ header {
     z-index: 100;
 }
 
+.user-info a {
+    text-decoration: none;
+    color: inherit; 
+}
+
+
+.user-info a:hover {
+    
+    color: #0f99f1;
+}
+
 .post .post_action a {
     text-decoration: none;
     color:#da528c;
@@ -111,6 +122,7 @@ nav ul.logo-container li a.logo img {
     flex-grow: 0;
 }
 
+
 .auth-buttons a {
     background-color: #0f99f1;
     color: #fff;
@@ -128,13 +140,13 @@ nav ul.logo-container li a.logo img {
 
 main.container {
     display: flex;
-    justify-content: space-between; /* Distribuye el espacio entre los elementos hijos */
+    justify-content: space-between; 
     align-items: flex-start;
 }
 
-main.container > * { /* Selecciona todos los elementos hijos directos de main.container */
-    margin-left: 10px; /* Agrega un margen izquierdo de 10 píxeles */
-    margin-right: 10px; /* Agrega un margen derecho de 10 píxeles */
+main.container > * { 
+    margin-left: 10px; 
+    margin-right: 10px; 
   }
 
 section.post-feed {
@@ -179,17 +191,17 @@ aside#crear-post {
     order: 0; 
 }
 section.post-feed {
-    flex: 2; /* Ocupa el espacio restante, dándole más prioridad */
-    order: 1; /* Se coloca en segundo lugar (centro) */
+    flex: 2; 
+    order: 1; 
 }
 
 aside.sidebar {
-    flex: 0 0 250px; /* Ancho fijo para la barra lateral derecha */
+    flex: 0 0 250px; 
     padding: 15px;
-    background-color: #da528c; /* Puedes añadir un color de fondo para visualizar */
+    background-color: #da528c; 
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    order: 2; /* Se coloca en tercer lugar (derecha) */
+    order: 2; 
 }
 
 aside#crear-post h2 {
@@ -206,9 +218,9 @@ aside#crear-post textarea {
     margin-bottom: 1em;
     border: 1px solid #ddd;
     border-radius: 5px;
-    box-sizing: border-box; /* Para que el padding no aumente el ancho total */
+    box-sizing: border-box;
     font-size: 1em;
-    margin-top: 1em; /* Espacio entre el título y el textarea */
+    margin-top: 1em; 
 }
 
 aside#crear-post button[type="submit"] {
@@ -229,8 +241,8 @@ aside#crear-post button[type="submit"]:hover {
 }
 
 section.post-feed {
-    flex: 2; /* Le damos más espacio al feed de publicaciones */
-    order: 0; /* Lo colocamos primero */
+    flex: 2; 
+    order: 0; 
 }
 
 section.post-feed h2 {

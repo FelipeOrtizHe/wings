@@ -1,4 +1,4 @@
-/* Estilos para la página de login (adaptados del registro) */
+/* Estilos para la página de login  */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -10,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url('/static/wings.png'); /* Manteniendo la imagen de fondo */
+    background-image: url('/static/wings.png'); 
     background-size: 300px;
     background-position: center;
 }

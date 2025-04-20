@@ -66,11 +66,16 @@
 
         <aside class="sidebar">
             <div class="user-info">
-                <h3> Bienvenido/a</h3>
-                <p> informacion del usuario aqui.</p>
+                {% if current_user.is_authenticated %}
+                    <h3>Bienvenido/a, {{ current_user.nombre }}</h3>
+                    <p><a href="{{ url_for('logout') }}">Cerrar Sesión</a></p>
+                {% else %}
+                    <h3>Bienvenido/a</h3>
+                    <p>Por favor, <a href="{{ url_for('login') }}">inicia sesión</a> o <a href="{{ url_for('registro') }}">regístrate</a>.</p>
+                {% endif %}
             </div>
             <div class="suggestions">
-                <h3> Sugerencias</h3>
+                <h3>Sugerencias</h3>
                 <ul>
                     <li><a href="#">Usuario 1</a></li>
                     <li><a href="#">Usuario 2</a></li>

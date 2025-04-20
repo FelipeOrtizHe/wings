@@ -11,7 +11,7 @@ class Usuario(UserMixin, db.Model):
     biografia = db.Column(db.Text, nullable=False)
     fecha_registro = db.Column(db.TIMESTAMP, server_default=db.func.current_timestamp())
     imagen_perfil = db.Column(db.String(200))
-    posts = db.relationship('Post', lazy=True) # Eliminar backref='autor'
+    posts = db.relationship('Post', lazy=True) 
 
     def __repr__(self):
         return f'<Usuario {self.nombre}>'

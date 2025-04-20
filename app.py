@@ -17,9 +17,9 @@ app.config.from_pyfile('utils/secret.py')
 
 db.init_app(app)
 
-login_manager = LoginManager() # Crea una instancia de LoginManager
-login_manager.init_app(app)   # Inicializa LoginManager con tu aplicación Flask
-login_manager.login_view = 'login' # Define la vista de login para las redirecciones
+login_manager = LoginManager() 
+login_manager.init_app(app)   
+login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -30,19 +30,19 @@ def index():
     return redirect(url_for("posts"))
 
 @app.route("/home")
-@login_required # Añade el decorador para proteger la página principal
+
 def posts():
     form_crear_post = Crear_registro()
     posts = Post.query.all()
     return render_template('index.html', posts=posts, form_crear_post=form_crear_post)
 
 @app.route("/crear_post", methods=['POST'])
-@login_required # Protege la creación de posts
+@login_required 
 def crear_post():
     form_crear_post = Crear_registro()
     if form_crear_post.validate_on_submit():
         contenido = form_crear_post.contenido.data
-        nueva_publicacion = Post(cotenido=contenido, fecha_creacion=datetime.now(timezone.utc), autor_id=current_user.id) # Asocia el post al usuario logueado
+        nueva_publicacion = Post(contenido=contenido, fecha_creacion=datetime.now(timezone.utc), id_usuario=current_user.id) 
         db.session.add(nueva_publicacion)
         db.session.commit()
         flash('¡Publicación creada!', 'success')
@@ -79,7 +79,7 @@ def login_post():
         if usuario and usuario.check_password(contraseña):
             login_user(usuario, remember=recordar)
             flash('Inicio de sesion exitoso')
-            return redirect(url_for('home')) # Redirige a la página principal después del login
+            return redirect(url_for('posts')) 
         else:
             flash('nombre de usuario o correo electronico contraseña incorrectos. Por favor, inténtalo de nuevo.', 'danger')
             return redirect(url_for('login'))
@@ -91,13 +91,13 @@ def login_post():
 def logout():
     logout_user()
     flash('¡Sesión cerrada!', 'info')
-    return redirect(url_for('home'))
+    return redirect(url_for('posts'))
 
 @app.route("/registro", methods=['GET', 'POST'])
 def registro():
     form = Registro()
     if form.validate_on_submit():
-        if form.submit_registro.data:
+        if form.submit.data:
             hashed_contraseña = generate_password_hash(form.contraseña.data)
             nuevo_usuario = Usuario(nombre=form.nombre.data,
                                     correo_electronico=form.correo_electronico.data,
@@ -106,7 +106,7 @@ def registro():
             db.session.add(nuevo_usuario)
             try:
                 db.session.commit()
-                return redirect(url_for("login")) # Redirige al login después del registro
+                return redirect(url_for("login")) 
             except IntegrityError as e:
                 db.session.rollback()
                 if "Duplicate entry" in str(e) and "nombre_UNIQUE" in str(e):
@@ -118,6 +118,6 @@ def registro():
     return render_template('registro.html', title='Registro', form=form)
 
 if __name__ == '__main__':
-    with app.app_context(): # Añade el contexto de la aplicación aquí
+    with app.app_context(): 
         db.create_all()
     app.run(debug=app.config['DEBUG'])
