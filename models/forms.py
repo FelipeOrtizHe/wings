@@ -30,7 +30,7 @@ class Crear_registro(FlaskForm):
     submit = SubmitField('Subir estado')
 
 
-class login(FlaskForm):
+class LoginForm(FlaskForm):
     identificar = StringField('Nombre de usuario o Correo electronico', validators=[DataRequired()])
     contraseña = PasswordField('Contraseña', validators=[(DataRequired())])
     recordar = BooleanField('Recordar')

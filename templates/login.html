@@ -14,7 +14,7 @@
     <header>
         <nav>
             <ul class=" logo-container">
-                <li><a href=" {{url_for('home')}} " class="logo"></a>
+                <li><a href=" {{url_for('posts')}} " class="logo"></a>
                     <img src=" {{url_for('static', filename='wings.png')}}" alt="logo"></li>
 
             </ul>
@@ -27,34 +27,45 @@
     <main class="container">
         <div class="login-container">
             <h1>INICIAR SESION</h1>
-            {% with message= get_flashed_messages(category_filter=['danger','succes','info']) %}
+            {% with messages = get_flashed_messages(category_filter=['danger', 'success', 'info']) %}
                 {% if messages %}
                     <div class="flash-messages">
-                            {% for message in messages %}
-                                <p class="{{category}}"> {{message}} </p>
-                            {% endfor %}
+                        {% for message in messages %}
+                            <p class="{{ category }}"> {{ message }} </p>
+                        {% endfor %}
                     </div>
                 {% endif %}
             {% endwith %}
             <form method="POST" action=" {{url_for('login')}} ">
-                {{form.hidden_tag()}}
+                {{ form.hidden_tag() }}
                 <div class="form-group">
-                    {{form.identificar.label}}br
-                    {{form.identificar(class="form-control")}}
-                    {% if form.identificar.errors%}
-                        <ul class="errors"> 
-                            {{% for erros in form.identificar.errors %}}
-                                <li> {{error}} </li>
-                            {{% endfor %}}
+                    {{ form.identificar.label }}<br>
+                    {{ form.identificar(class="form-control") }}
+                    {% if form.identificar.errors %}
+                        <ul class="errors">
+                            {% for error in form.identificar.errors %}
+                                <li> {{ error }} </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.contraseña.label }}<br>
+                    {{ form.contraseña(class="form-control") }}
+                    {% if form.contraseña.errors %}
+                        <ul class="errors">
+                            {% for error in form.contraseña.errors %}
+                                <li> {{ error }} </li>
+                            {% endfor %}
                         </ul>
                     {% endif %}
                 </div>
                 <div class="form-group form-check">
-                    {{ form.recordar(class="form-check-input")}}
-                    {{ form.recordar.label(class="form-check-label")}}
+                    {{ form.recordar(class="form-check-input") }}
+                    {{ form.recordar.label(class="form-check-label") }}
                 </div>
                 <div class="form-group">
-                    {{form.submit(class="btn btn-primary")}}
+                    {{ form.submit(class="btn btn-primary") }}
                 </div>
                 <p>No tienes cuenta? <a href=" {{url_for('registro')}} ">Ingresa aqui</a>.</p>
 
