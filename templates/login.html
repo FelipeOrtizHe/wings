@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logeo Con - WINGS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="{{ url_for('static', filename='wings.png') }}" type="image/png">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul class=" logo-container">
+                <li><a href=" {{url_for('home')}} " class="logo"></a>
+                    <img src=" {{url_for('static', filename='wings.png')}}" alt="logo"></li>
+
+            </ul>
+            <ul class="auth-buttons">
+                <li><a href="/registro">Registrarse</a></li>
+                <li><a href="/login">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container"></main>
+</body>
+</html>

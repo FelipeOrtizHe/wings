@@ -2,11 +2,12 @@ from flask import Flask, render_template, redirect, url_for,flash
 from models.extensions import db
 from utils import config
 from models import Usuario, Post
-from models.forms import Registro, Crear_registro
-from werkzeug.security import generate_password_hash
+from models.forms import Registro, Crear_registro , login
+from werkzeug.security import generate_password_hash, check_password_hash
 from utils.secret import SECRET_KEY
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
+from flask_login import login_user, logout_user,current_user,login_required
 
 
 app = Flask(__name__)
@@ -52,6 +53,42 @@ def test_db_connection():
     except Exception as e:
         db.session.rollback()
         return render_template('test_db.html', usuarios=[], error=str(e))
+
+@app.route("/login", method=['GET'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form = login()
+    return render_template('login.html', form=form)
+
+@app.route("/login", method=['POST'])
+def login_post():
+    form = login()
+    if form.validate_on_submit():
+        identificacion = form.identificar.data
+        contraseña = form.contraseña.data
+        recordar = form.recordar.data
+
+        usuario = Usuario.query.filter((Usuario.nombre == identificacion) |(Usuario.correo_electronico == identificacion )).first()
+
+        if usuario and usuario.check_password(contraseña):
+            login_user(usuario, recordar= recordar)
+            flash('Inicio de sesion exitoso')
+        else:
+            flash('nombre de usuario o correo electronico contraseña incorrectos. Por favor, inténtalo de nuevo.', 'danger')
+            return redirect(url_for('login'))
+    
+    return render_template('login.html', form=form)
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    flash('¡Sesión cerrada!', 'info')
+    return redirect(url_for('home'))
+
+
+
 
 @app.route("/registro", methods=['GET','POST'])
 def registro():

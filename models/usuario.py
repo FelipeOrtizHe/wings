@@ -1,6 +1,8 @@
-from .extensions import db
+from models.extensions import db
+from flask_login import UserMixin
+from werkzeug.security import check_password_hash
 
-class Usuario(db.Model):
+class Usuario(db.Model,UserMixin):
     __tablename__ = 'usuario'
     id = db.Column(db.Integer, primary_key=True, nullable=False, autoincrement=True, name='id_usuarios')
     nombre = db.Column(db.String(24), unique=True, nullable=False)
@@ -13,3 +15,9 @@ class Usuario(db.Model):
 
     def __repr__(self):
         return f'<Usuario {self.nombre}>'
+    
+    def check_password(self,password):
+        return check_password_hash(self.contraseña,password)
+    
+    def get_id(self):
+        return str().get_id()

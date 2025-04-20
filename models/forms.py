@@ -1,8 +1,9 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField,SubmitField
+from wtforms import StringField, PasswordField, TextAreaField,SubmitField,BooleanField
 from wtforms.validators import DataRequired, Email ,EqualTo , Length
 from wtforms import ValidationError
 from models import Usuario
+
 
 class Registro(FlaskForm):
     nombre = StringField('Nombre de usuario', validators=[DataRequired(), Length(min = 5, max= 24)])
@@ -29,3 +30,8 @@ class Crear_registro(FlaskForm):
     submit = SubmitField('Subir estado')
 
 
+class login(FlaskForm):
+    identificar = StringField('Nombre de usuario o Correo electronico', validators=[DataRequired()])
+    contraseña = PasswordField('Contraseña', validators=[(DataRequired())])
+    recordar = BooleanField('Recordar')
+    submit = SubmitField('Iniciar sesion')
